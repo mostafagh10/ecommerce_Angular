@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        @for(product of products; track product.id){
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                @if(product.stock > 0){
+                <div class="checkstock" style="background-color: green;">in stock</div>
+                }@else {
+                    <div class="checkstock" style="background-color: red;">out of stock</div>  
+                }
+                <img [src]="product.images[0]" class="card-img-top" [alt]="product.title" height="200">
+                <div class="card-body">
+                <div class="card-title">
+                    <div class="title1">
+                        <h5 class="thetitle" (click)="movetodetailspage(product.id)">{{product.title}}</h5>
+                    </div>
+                    <div class="title2">
+                        <h6>${{product.price}}.00</h6>
+                    </div>
+                </div>
+                  <div class="card-text"><div style="height: 120px;">{{product.description}}</div></div>
+                  <div class="card-text mb-2" style="display: inline-block;" *ngFor="let i of [1,2,3,4,5]">
+                    @if(i <= product.rating){
+                        <i class="fa fa-star floating"></i>
+                    }@else{
+                    <i class="fa fa-star notrated" aria-hidden="true"></i>
+                    }
+                   </div><br />
+                  <button>Add To Cart</button>
+                </div>
+              </div>
+        </div>
+        }
+    </div>
+</div>

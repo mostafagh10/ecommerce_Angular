@@ -1,0 +1,71 @@
+.checkstock{
+    padding: 5px 30px 5px 30px;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    display: inline;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.btn1 button,.btn2 button{
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 20px;
+    transition: all 0.4s ease-in-out;
+}
+.btn1 button{
+    background-color: rgb(0, 66, 33);
+    color: white;
+}
+.btn1 button:hover{
+    background-color: white;
+    color: rgb(0, 66, 33);
+    cursor: pointer;
+}
+.btn2 button{
+    background-color: white;
+    color: rgb(0, 66, 33);
+}
+.btn2 button:hover{
+    background-color: rgb(0, 66, 33);
+    color: white;
+    cursor: pointer;
+}
+p{
+    font-weight: bold;
+    color: rgb(119, 119, 119);
+}
+
+.orders{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(231, 229, 229);
+    border-radius: 30px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.second p{
+    color: black;
+    font-size: 25px;
+}
+.second{
+    padding-top: 8px;
+}
+.first button,.third button{
+    font-size: 20px;
+    font-weight: bold;
+    border: 0px;
+    background: none;
+}
+.fa{
+    color: rgb(0, 66, 33);
+    margin: 5px;
+    display: inline;
+}
+.notrated{
+    color: gray;
+}
