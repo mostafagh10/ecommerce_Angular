@@ -1,0 +1,21 @@
+<div class="row" style="align-items: center;">
+    <div class="col-sm-3">
+        <img [src]="productitem.images[0]" height="200" width="100%" />
+    </div>
+    <div class="col-sm-3">
+        <p>{{productitem.title}}</p>
+        <p style="color: gray;">{{productitem.description}}</p>
+    </div>
+    <div class="col-sm-2">
+        <button (click)="increasequantity()" class="incresebutton" style="display: inline-block;" [disabled]="productitem.stock == number">+</button>
+        <p style="display: inline-block;">{{number}}</p>
+        <button (click)="decresequantity()" class="decresebutton" style="display: inline-block;" [disabled]="number == 1">-</button>
+    </div>
+    <div class="col-sm-2">
+        <button class="removebutton" (click)="removefromcart(productitem.id)">x</button>
+    </div>
+    <div class="col-sm-2">
+        <p>${{productitem.price * number}}</p>
+    </div>
+</div> 
+<hr/>

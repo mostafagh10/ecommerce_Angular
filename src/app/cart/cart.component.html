@@ -1,1 +1,26 @@
-<p>cart works!</p>
+<div class="container mt-4">
+    <h1 class="mt-2">Cart</h1>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-sm-3">
+            image
+        </div>
+        <div class="col-sm-3">
+            Description
+        </div>
+        <div class="col-sm-2">
+            Quantity
+        </div>
+        <div class="col-sm-2">
+            Remove
+        </div>
+        <div class="col-sm-2">
+            Price
+        </div>
+    </div>
+    <hr/>
+    @for(product of products; track product.id){
+        <app-cartitem [productitem]="product" (sendremoveproduct)="removefromparent($event)"></app-cartitem>
+    }
+
+
+</div>

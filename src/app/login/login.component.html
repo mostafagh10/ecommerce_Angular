@@ -1,1 +1,40 @@
-<p>login works!</p>
+<div>
+    <div class="loginpage">
+        <form #loginform="ngForm" (ngSubmit)="handleloginform(loginform)">
+            <label for="email" class="mb-2">Email</label>
+            <input type="text" 
+             class="form-control mb-2"
+             placeholder="Enter your email"
+             required
+             pattern="[a-zA-Z0-9]+@gmail.com"
+             name="email"
+             ngModel
+             #theemail="ngModel" />
+             @if(theemail.invalid && theemail.touched){
+                @if(theemail.errors?.['required']){
+                    <div class="alert alert-danger">Email must be required</div>
+                }@if(theemail.errors?.['pattern']){
+                    <div class="alert alert-danger">Email must be in correct format</div>
+                }
+
+             }
+            <label for="password" class="mb-2">Password</label>
+            <input type="password" 
+             class="form-control mb-2"
+             placeholder="Enter your password"
+             required
+             name="password"
+             ngModel
+             #thepass="ngModel" />
+             @if(thepass.invalid && thepass.touched){
+                @if(thepass.errors?.['required']){
+                    <div class="alert alert-danger">password must be required</div>
+                }
+             }
+            <button (click)="showsuccessmessage()" class="mb-2 mt-2" [disabled]="!(theemail.valid && thepass.valid)">Login</button>
+        </form>
+    </div>
+    <div class="text-center">
+        <p>Don't have account ? <a routerLink="/register">Register</a> </p>
+    </div>
+</div>

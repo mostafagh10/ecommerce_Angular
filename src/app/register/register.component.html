@@ -1,1 +1,54 @@
-<p>register works!</p>
+<div>
+    <div class="signuppage">
+        <form [formGroup]="registerForm" (ngSubmit)="handleregisterform()" >
+            <label for="name" class="mb-2">Username</label>
+            <input type="text" class="form-control mb-2" placeholder="Enter your name" formControlName="username" />
+            @if(registerForm.controls['username'].invalid && (registerForm.controls['username'].touched || registerForm.controls['username'].dirty)){
+                   @if(registerForm.controls['username'].errors?.["required"]){
+                    <div class="alert alert-danger">the name must be required</div>
+                   } @if(registerForm.controls['username'].errors?.["pattern"]){
+                    <div class="alert alert-danger">the name must not contains spaces</div>
+                   }
+            }
+            <label for="email" class="mb-2">Email</label>
+            <input type="text" class="form-control mb-2" placeholder="Enter your email" formControlName="email" />
+            @if(registerForm.controls['email'].invalid && (registerForm.controls['email'].touched || registerForm.controls['email'].dirty)){
+                @if(registerForm.controls['email'].errors?.["required"]){
+                 <div class="alert alert-danger">the email must be required</div>
+                } @if(registerForm.controls['email'].errors?.["email"]){
+                    <div class="alert alert-danger">the email must be in right format</div>
+                }
+         }
+            <label for="password" class="mb-2">Password</label>
+            <input type="password" class="form-control mb-2" placeholder="Enter your password" formControlName="password" />
+            @if(registerForm.controls['password'].invalid && registerForm.controls['password'].touched){
+                @if(registerForm.controls['password'].errors?.["required"]){
+                 <div class="alert alert-danger">the password must be required</div>
+                }@else if(registerForm.controls['password'].errors?.["minlength"]){
+                    <div class="alert alert-danger">the password should be at least 8 characters </div>
+                }@else if(registerForm.controls['password'].errors?.["invalidPassword"]){
+                    <div class="alert alert-danger">the password should contains at least one 
+                        lowercase , one uppercase , at least one digit 
+                        and special character </div>
+                }
+            }
+            <label for="confirmpassword" class="mb-2">Confirm Password</label>
+            <input type="password" class="form-control mb-2" placeholder="confirm your password" formControlName="confirmpassword" (change)="validatePasswordConfirmation()" />
+
+            @if(registerForm.controls['confirmpassword'].invalid && registerForm.controls['confirmpassword'].touched){
+                @if(registerForm.controls['confirmpassword'].errors?.["required"]){
+                 <div class="alert alert-danger">the confirm password must be required</div>
+                }@if(registerForm.controls['confirmpassword'].errors?.["mismatch"]){
+                    <div class="alert alert-danger">password doesn't match </div>
+                }
+            }
+
+        <button class="mb-2 mt-2" [disabled]="!(registerForm.controls['username'].valid && 
+        registerForm.controls['email'].valid && registerForm.controls['password'].valid
+        && registerForm.controls['confirmpassword'].valid)">Signup</button>
+    </form>
+    </div>
+    <div class="text-center">
+        <p>Already have account ? <a routerLink="/login">Login</a> </p>
+    </div>
+</div>
